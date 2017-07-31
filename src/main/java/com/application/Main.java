@@ -9,6 +9,7 @@ import java.util.Date;
 import org.hibernate.Session;
 import com.models.util.HibernateUtil;
 import com.models.DBUser;
+import com.operations.UserOP;
 
 /**
  *
@@ -17,19 +18,24 @@ import com.models.DBUser;
 public class Main {
     
 	public static void main(String[] args) {
-		System.out.println("Maven + Hibernate + Oracle");
-		Session session = HibernateUtil.getSessionFactory().openSession();
+//		System.out.println("Maven + Hibernate + Oracle");
+//		Session session = HibernateUtil.getSessionFactory().openSession();
+//
+//		session.beginTransaction();
+//		DBUser user = new DBUser();
+//
+//		user.setUserId(1);
+//		user.setUsername("batman");
+//		user.setCreatedBy("system");
+//		user.setCreatedDate(new Date());
+//
+//		session.save(user);
+//		session.getTransaction().commit();
 
-		session.beginTransaction();
-		DBUser user = new DBUser();
-
-		user.setUserId(1);
-		user.setUsername("batman");
-		user.setCreatedBy("system");
-		user.setCreatedDate(new Date());
-
-		session.save(user);
-		session.getTransaction().commit();
+            UserOP userOP = new UserOP();
+            System.out.println("Total records: "+userOP.countCriteria());
+            
+            userOP.closeConection();
 	}
     
 }
